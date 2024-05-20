@@ -33,9 +33,10 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBoxEra = new TextBox();
-            textBoxPrice = new TextBox();
-            comboBoxEra = new ComboBox();
+            numericUpDownEra = new NumericUpDown();
+            numericUpDownPrice = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownEra).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPrice).BeginInit();
             SuspendLayout();
             // 
             // buttonAdd
@@ -60,7 +61,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(147, 118);
+            label1.Location = new Point(67, 118);
             label1.Name = "label1";
             label1.Size = new Size(75, 15);
             label1.TabIndex = 2;
@@ -69,56 +70,46 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(147, 159);
+            label2.Location = new Point(62, 159);
             label2.Name = "label2";
-            label2.Size = new Size(71, 15);
+            label2.Size = new Size(160, 15);
             label2.TabIndex = 3;
-            label2.Text = "Введите век";
+            label2.Text = "Введите век (до нашей эры)";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(143, 199);
+            label3.Location = new Point(67, 199);
             label3.Name = "label3";
             label3.Size = new Size(79, 15);
             label3.TabIndex = 4;
             label3.Text = "Введите цену";
             // 
-            // textBoxEra
+            // numericUpDownEra
             // 
-            textBoxEra.BackColor = SystemColors.InactiveCaption;
-            textBoxEra.Location = new Point(228, 151);
-            textBoxEra.Name = "textBoxEra";
-            textBoxEra.Size = new Size(124, 23);
-            textBoxEra.TabIndex = 5;
+            numericUpDownEra.Location = new Point(228, 151);
+            numericUpDownEra.Name = "numericUpDownEra";
+            numericUpDownEra.Size = new Size(125, 23);
+            numericUpDownEra.TabIndex = 7;
+            numericUpDownEra.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // textBoxPrice
+            // numericUpDownPrice
             // 
-            textBoxPrice.BackColor = SystemColors.InactiveCaption;
-            textBoxPrice.Location = new Point(228, 191);
-            textBoxPrice.Name = "textBoxPrice";
-            textBoxPrice.Size = new Size(125, 23);
-            textBoxPrice.TabIndex = 6;
-            // 
-            // comboBoxEra
-            // 
-            comboBoxEra.BackColor = SystemColors.InactiveCaption;
-            comboBoxEra.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxEra.FormattingEnabled = true;
-            comboBoxEra.Items.AddRange(new object[] { "До нашей эры", "Нашей эры" });
-            comboBoxEra.Location = new Point(359, 153);
-            comboBoxEra.Name = "comboBoxEra";
-            comboBoxEra.Size = new Size(104, 23);
-            comboBoxEra.TabIndex = 7;
+            numericUpDownPrice.Location = new Point(228, 191);
+            numericUpDownPrice.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            numericUpDownPrice.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDownPrice.Name = "numericUpDownPrice";
+            numericUpDownPrice.Size = new Size(125, 23);
+            numericUpDownPrice.TabIndex = 8;
+            numericUpDownPrice.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // AddExhibit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(464, 299);
-            Controls.Add(comboBoxEra);
-            Controls.Add(textBoxPrice);
-            Controls.Add(textBoxEra);
+            Controls.Add(numericUpDownPrice);
+            Controls.Add(numericUpDownEra);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -126,6 +117,8 @@
             Controls.Add(buttonAdd);
             Name = "AddExhibit";
             Text = "Добавить/Изменить эксопнат";
+            ((System.ComponentModel.ISupportInitialize)numericUpDownEra).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPrice).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,8 +130,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBoxEra;
-        private TextBox textBoxPrice;
-        private ComboBox comboBoxEra;
+        private NumericUpDown numericUpDownEra;
+        private NumericUpDown numericUpDownPrice;
     }
 }
