@@ -149,21 +149,16 @@ namespace Museum
                 MessageBox.Show("База данных не существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                // Получение списка экспонатов из базы данных
                 var exhibit = context.Museums.ToList();
 
-                // Преобразование списка экспонатов в формат JSON
                 string json = JsonConvert.SerializeObject(exhibit, Formatting.Indented);
 
-                // Определение директории для сохранения файла
                 string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string dataDirectory = Path.Combine(projectDirectory, "DataExhibit");
 
-                // Проверка существования директории и ее создание, если не существует
                 if (!Directory.Exists(dataDirectory))
                     Directory.CreateDirectory(dataDirectory);
 
-                // Поиск существующих файлов JSON в директории и сравнение их с текущими данными
                 var existingFiles = Directory.GetFiles(dataDirectory, "*.json");
                 foreach (var existingFile in existingFiles)
                 {

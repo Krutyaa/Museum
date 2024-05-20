@@ -164,17 +164,14 @@ public partial class FormUser : Form
             var users = context.Users.ToList();
             string json = JsonConvert.SerializeObject(users, Formatting.Indented);
 
-            // Путь к папке "Data" внутри вашего проекта
             string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string dataDirectory = Path.Combine(projectDirectory, "DataUsers");
 
-            // Убедитесь, что папка "Data" существует
             if (!Directory.Exists(dataDirectory))
             {
                 Directory.CreateDirectory(dataDirectory);
             }
 
-            // Проверьте, существует ли файл с такими же данными
             var existingFiles = Directory.GetFiles(dataDirectory, "*.json");
             foreach (var existingFile in existingFiles)
             {
@@ -186,12 +183,9 @@ public partial class FormUser : Form
                 }
             }
 
-            // Создайте новый файл с уникальным именем
             string uniqueFileName = $"users_{DateTime.Now:yyyyMMdd_HHmmss}.json";
             string filePath = Path.Combine(dataDirectory, uniqueFileName);
-
             File.WriteAllText(filePath, json);
-
             MessageBox.Show($"Данные успешно сохранены в файл {filePath}.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         else
