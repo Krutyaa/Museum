@@ -159,7 +159,7 @@
             comboBoxExhibit.BackColor = SystemColors.InactiveCaption;
             comboBoxExhibit.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxExhibit.FormattingEnabled = true;
-            comboBoxExhibit.Items.AddRange(new object[] { "Имя", "Эра", "Цена" });
+            comboBoxExhibit.Items.AddRange(new object[] { "Имя", "Век", "Цена" });
             comboBoxExhibit.Location = new Point(169, 283);
             comboBoxExhibit.Name = "comboBoxExhibit";
             comboBoxExhibit.Size = new Size(120, 23);

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Data;
 using System.Globalization;
 
@@ -73,18 +74,23 @@ namespace Museum
         /// </summary>
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            AddExhibit addExhibit = new AddExhibit();
-            if (addExhibit.ShowDialog() == DialogResult.OK)
+            if (!context.Database.CanConnect())
+                MessageBox.Show("База данных не существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                Museum newMuseum = new Museum
+                AddExhibit addExhibit = new AddExhibit();
+                if (addExhibit.ShowDialog() == DialogResult.OK)
                 {
-                    Name = addExhibit.MuseumName,
-                    Era = addExhibit.MuseumEra,
-                    Price = addExhibit.MuseumPrice,
-                };
-                context.Museums.Add(newMuseum);
-                context.SaveChanges();
-                LoadData();
+                    Museum newMuseum = new Museum
+                    {
+                        Name = addExhibit.MuseumName,
+                        Era = addExhibit.MuseumEra,
+                        Price = addExhibit.MuseumPrice,
+                    };
+                    context.Museums.Add(newMuseum);
+                    context.SaveChanges();
+                    LoadData();
+                }
             }
         }
 
@@ -139,35 +145,40 @@ namespace Museum
         /// </summary>
         private void buttonSaveExhibit_Click(object sender, EventArgs e)
         {
-            // Получение списка экспонатов из базы данных
-            var exhibit = context.Museums.ToList();
-
-            // Преобразование списка экспонатов в формат JSON
-            string json = JsonConvert.SerializeObject(exhibit, Formatting.Indented);
-
-            // Определение директории для сохранения файла
-            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string dataDirectory = Path.Combine(projectDirectory, "DataExhibit");
-
-            // Проверка существования директории и ее создание, если не существует
-            if (!Directory.Exists(dataDirectory))
-                Directory.CreateDirectory(dataDirectory);
-
-            // Поиск существующих файлов JSON в директории и сравнение их с текущими данными
-            var existingFiles = Directory.GetFiles(dataDirectory, "*.json");
-            foreach (var existingFile in existingFiles)
+            if (!context.Database.CanConnect())
+                MessageBox.Show("База данных не существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                var existingJson = File.ReadAllText(existingFile);
-                if (existingJson == json)
+                // Получение списка экспонатов из базы данных
+                var exhibit = context.Museums.ToList();
+
+                // Преобразование списка экспонатов в формат JSON
+                string json = JsonConvert.SerializeObject(exhibit, Formatting.Indented);
+
+                // Определение директории для сохранения файла
+                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string dataDirectory = Path.Combine(projectDirectory, "DataExhibit");
+
+                // Проверка существования директории и ее создание, если не существует
+                if (!Directory.Exists(dataDirectory))
+                    Directory.CreateDirectory(dataDirectory);
+
+                // Поиск существующих файлов JSON в директории и сравнение их с текущими данными
+                var existingFiles = Directory.GetFiles(dataDirectory, "*.json");
+                foreach (var existingFile in existingFiles)
                 {
-                    MessageBox.Show($"Файл с такими же данными уже существует: {Path.GetFileName(existingFile)}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    var existingJson = File.ReadAllText(existingFile);
+                    if (existingJson == json)
+                    {
+                        MessageBox.Show($"Файл с такими же данными уже существует: {Path.GetFileName(existingFile)}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
+                string uniqueFileName = $"exhibit_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+                string filePath = Path.Combine(dataDirectory, uniqueFileName);
+                File.WriteAllText(filePath, json);
+                MessageBox.Show($"Данные успешно сохранены в файл {filePath}.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            string uniqueFileName = $"exhibit_{DateTime.Now:yyyyMMdd_HHmmss}.json";
-            string filePath = Path.Combine(dataDirectory, uniqueFileName);
-            File.WriteAllText(filePath, json);
-            MessageBox.Show($"Данные успешно сохранены в файл {filePath}.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>

@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using System.Globalization;
 
 namespace Museum;
 
@@ -53,19 +52,26 @@ public partial class FormUser : Form
     /// </summary>
     private void AddUser_Click(object sender, EventArgs e)
     {
-        AddUser addUser = new AddUser();
-
-        if (addUser.ShowDialog() == DialogResult.OK)
+        if (context.Database.CanConnect())
         {
-            User newUser = new User
+            AddUser addUser = new AddUser();
+
+            if (addUser.ShowDialog() == DialogResult.OK)
             {
-                Name = addUser.UserName,
-                Surname = addUser.UserSurname,
-                DateOfVisit = addUser.UserDateOfVisit,
-            };
-            context.Users.Add(newUser);
-            context.SaveChanges();
-            LoadData();
+                User newUser = new User
+                {
+                    Name = addUser.UserName,
+                    Surname = addUser.UserSurname,
+                    DateOfVisit = addUser.UserDateOfVisit,
+                };
+                context.Users.Add(newUser);
+                context.SaveChanges();
+                LoadData();
+            }
+        }
+        else
+        {
+            MessageBox.Show("База данных не существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
@@ -113,7 +119,10 @@ public partial class FormUser : Form
             }
         }
     }
-   
+
+    /// <summary>
+    /// Обработчик нажатия кнопки "Создать базу данных".
+    /// </summary>
     /// <summary>
     /// Обработчик нажатия кнопки "Создать базу данных".
     /// </summary>
@@ -150,38 +159,45 @@ public partial class FormUser : Form
     /// </summary>
     private void SaveDataBase_Click(object sender, EventArgs e)
     {
-        var users = context.Users.ToList();
-        string json = JsonConvert.SerializeObject(users, Formatting.Indented);
-
-        // Путь к папке "Data" внутри вашего проекта
-        string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        string dataDirectory = Path.Combine(projectDirectory, "DataUsers");
-
-        // Убедитесь, что папка "Data" существует
-        if (!Directory.Exists(dataDirectory))
+        if (context.Database.CanConnect())
         {
-            Directory.CreateDirectory(dataDirectory);
-        }
+            var users = context.Users.ToList();
+            string json = JsonConvert.SerializeObject(users, Formatting.Indented);
 
-        // Проверьте, существует ли файл с такими же данными
-        var existingFiles = Directory.GetFiles(dataDirectory, "*.json");
-        foreach (var existingFile in existingFiles)
-        {
-            var existingJson = File.ReadAllText(existingFile);
-            if (existingJson == json)
+            // Путь к папке "Data" внутри вашего проекта
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string dataDirectory = Path.Combine(projectDirectory, "DataUsers");
+
+            // Убедитесь, что папка "Data" существует
+            if (!Directory.Exists(dataDirectory))
             {
-                MessageBox.Show($"Файл с такими же данными уже существует: {Path.GetFileName(existingFile)}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                Directory.CreateDirectory(dataDirectory);
             }
+
+            // Проверьте, существует ли файл с такими же данными
+            var existingFiles = Directory.GetFiles(dataDirectory, "*.json");
+            foreach (var existingFile in existingFiles)
+            {
+                var existingJson = File.ReadAllText(existingFile);
+                if (existingJson == json)
+                {
+                    MessageBox.Show($"Файл с такими же данными уже существует: {Path.GetFileName(existingFile)}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // Создайте новый файл с уникальным именем
+            string uniqueFileName = $"users_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+            string filePath = Path.Combine(dataDirectory, uniqueFileName);
+
+            File.WriteAllText(filePath, json);
+
+            MessageBox.Show($"Данные успешно сохранены в файл {filePath}.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        // Создайте новый файл с уникальным именем
-        string uniqueFileName = $"users_{DateTime.Now:yyyyMMdd_HHmmss}.json";
-        string filePath = Path.Combine(dataDirectory, uniqueFileName);
-
-        File.WriteAllText(filePath, json);
-
-        MessageBox.Show($"Данные успешно сохранены в файл {filePath}.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        else
+        {
+            MessageBox.Show("База данных не существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 
     /// <summary>

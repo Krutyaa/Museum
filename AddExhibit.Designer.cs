@@ -35,6 +35,7 @@
             label3 = new Label();
             textBoxEra = new TextBox();
             textBoxPrice = new TextBox();
+            comboBoxEra = new ComboBox();
             SuspendLayout();
             // 
             // buttonAdd
@@ -81,7 +82,7 @@
             label3.Name = "label3";
             label3.Size = new Size(79, 15);
             label3.TabIndex = 4;
-            label3.Text = "Ввеидте цену";
+            label3.Text = "Введите цену";
             // 
             // textBoxEra
             // 
@@ -99,11 +100,23 @@
             textBoxPrice.Size = new Size(125, 23);
             textBoxPrice.TabIndex = 6;
             // 
+            // comboBoxEra
+            // 
+            comboBoxEra.BackColor = SystemColors.InactiveCaption;
+            comboBoxEra.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxEra.FormattingEnabled = true;
+            comboBoxEra.Items.AddRange(new object[] { "До нашей эры", "Нашей эры" });
+            comboBoxEra.Location = new Point(359, 153);
+            comboBoxEra.Name = "comboBoxEra";
+            comboBoxEra.Size = new Size(104, 23);
+            comboBoxEra.TabIndex = 7;
+            // 
             // AddExhibit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(464, 299);
+            Controls.Add(comboBoxEra);
             Controls.Add(textBoxPrice);
             Controls.Add(textBoxEra);
             Controls.Add(label3);
@@ -126,5 +139,6 @@
         private Label label3;
         private TextBox textBoxEra;
         private TextBox textBoxPrice;
+        private ComboBox comboBoxEra;
     }
 }

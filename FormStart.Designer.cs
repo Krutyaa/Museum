@@ -37,7 +37,7 @@
             // 
             // GoToMuseum
             // 
-            GoToMuseum.BackColor = Color.Gold;
+            GoToMuseum.BackColor = SystemColors.ActiveCaption;
             GoToMuseum.Location = new Point(57, 135);
             GoToMuseum.Name = "GoToMuseum";
             GoToMuseum.Size = new Size(302, 127);
@@ -48,8 +48,8 @@
             // 
             // GoToUser
             // 
-            GoToUser.BackColor = Color.Gold;
-            GoToUser.Location = new Point(444, 135);
+            GoToUser.BackColor = SystemColors.ActiveCaption;
+            GoToUser.Location = new Point(438, 135);
             GoToUser.Name = "GoToUser";
             GoToUser.Size = new Size(302, 127);
             GoToUser.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // ApplicationExit
             // 
-            ApplicationExit.BackColor = Color.Gold;
+            ApplicationExit.BackColor = SystemColors.ActiveCaption;
             ApplicationExit.Location = new Point(560, 376);
             ApplicationExit.Name = "ApplicationExit";
             ApplicationExit.Size = new Size(228, 62);
@@ -71,8 +71,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.Gold;
-            label1.Location = new Point(276, 56);
+            label1.BackColor = SystemColors.ActiveCaption;
+            label1.Location = new Point(279, 67);
             label1.Name = "label1";
             label1.Size = new Size(198, 15);
             label1.TabIndex = 3;
