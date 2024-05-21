@@ -195,8 +195,8 @@ public partial class FormUser : Form
     }
 
     /// <summary>
-    /// Обработчик нажатия кнопки "Поиск".
-    /// Производит поиск посетителей по введенному тексту в поле поиска.
+    /// Обработчик нажатия кнопки "Фильтрация".
+    /// Производит фильтрацию посетителей по введенному тексту в поле фильтрации.
     /// </summary>
     private void buttonSearch_Click(object sender, EventArgs e)
     {
@@ -212,10 +212,14 @@ public partial class FormUser : Form
                     searchTerms.All(term => u.Name.Contains(term) || u.Surname.Contains(term) || u.DateOfVisit.Contains(term))).ToList();
 
                 dataUser.DataSource = filteredUsers;
+                labelStatus.Text = $"Найдено экспонатов: {filteredUsers.Count} из {context.Users.Count()}";
             }
             else
-                dataUser.DataSource = context.Users.ToList();
-            dataUser.ClearSelection();
+            {
+                var allUsers = context.Users.ToList();
+                dataUser.DataSource = allUsers;
+                labelStatus.Text = "";
+            }
         }
         else
             MessageBox.Show("База данных не существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

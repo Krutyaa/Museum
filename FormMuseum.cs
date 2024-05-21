@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Data;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Museum
 {
@@ -207,8 +208,8 @@ namespace Museum
         }
 
         /// <summary>
-        /// Обработчик нажатия кнопки "Поиск".
-        /// Производит поиск экспонатов по введенному тексту в поле поиска.
+        /// Обработчик нажатия кнопки "Фильтрация".
+        /// Производит фильтрацию экспонатов по введенному тексту в поле фильтрации.
         /// </summary>
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -224,10 +225,14 @@ namespace Museum
                         searchTerms.All(term => u.Name.Contains(term) || u.Era.Contains(term))).ToList();
 
                     dataExhibit.DataSource = filteredExhibit;
+
+                    labelStatus.Text = $"Найдено экспонатов: {filteredExhibit.Count} из {context.Museums.Count()}";
                 }
                 else
                 {
-                    dataExhibit.DataSource = context.Museums.ToList();
+                    var allExhibits = context.Museums.ToList();
+                    dataExhibit.DataSource = allExhibits;
+                    labelStatus.Text = "";
                 }
             }
             else
@@ -237,7 +242,7 @@ namespace Museum
         }
 
         /// <summary>
-        /// Обработчик нажатия кнопки "Фильтрация".
+        /// Обработчик нажатия кнопки "Сортировка".
         /// </summary>
         private void buttonFiltering_Click(object sender, EventArgs e)
         {
@@ -268,8 +273,7 @@ namespace Museum
                         break;
 
                     case "Цена":
-                        filteredExhibit = context.Museums.ToList()
-                            .Where(u => decimal.TryParse(u.Price, NumberStyles.Currency, CultureInfo.InvariantCulture, out _))
+                        filteredExhibit = context.Museums.ToList().Where(u => decimal.TryParse(u.Price, NumberStyles.Currency, CultureInfo.InvariantCulture, out _))
                             .OrderBy(u => decimal.Parse(u.Price, NumberStyles.Currency, CultureInfo.InvariantCulture))
                             .ToList();
                         break;
@@ -280,8 +284,6 @@ namespace Museum
                 }
                 dataExhibit.DataSource = filteredExhibit;
             }
-            else
-                dataExhibit.DataSource = context.Museums.ToList();
         }
 
         /// <summary>

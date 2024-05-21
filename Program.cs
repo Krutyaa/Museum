@@ -11,6 +11,12 @@ static class Program
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
+        // Показать форму SplashScreen
+        using (SplashScreen splashScreen = new SplashScreen())
+        {
+            splashScreen.ShowDialog();
+        }
+
         Application.Run(new FormStart());
     }
 }

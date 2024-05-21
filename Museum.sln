@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Museum", "Museum.csproj", "{062727C7-550F-4C86-AE00-5BA7F63879B7}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{AD3DA829-7FCC-4A16-8F2B-74E76CBB5592}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{E7E0523B-DE2E-4986-A9AC-CD0B1A6193B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{062727C7-550F-4C86-AE00-5BA7F63879B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{062727C7-550F-4C86-AE00-5BA7F63879B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{062727C7-550F-4C86-AE00-5BA7F63879B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD3DA829-7FCC-4A16-8F2B-74E76CBB5592}.Debug|Any CPU.ActiveCfg = Debug
-		{AD3DA829-7FCC-4A16-8F2B-74E76CBB5592}.Release|Any CPU.ActiveCfg = Release
+		{E7E0523B-DE2E-4986-A9AC-CD0B1A6193B3}.Debug|Any CPU.ActiveCfg = Debug
+		{E7E0523B-DE2E-4986-A9AC-CD0B1A6193B3}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

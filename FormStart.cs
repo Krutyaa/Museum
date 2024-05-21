@@ -15,7 +15,6 @@
             GoToUser.Anchor = AnchorStyles.None;
             GoToMuseum.Anchor = AnchorStyles.None;
             ApplicationExit.Anchor = AnchorStyles.None;
-            label1.Anchor = AnchorStyles.None;
         }
 
         /// <summary>
