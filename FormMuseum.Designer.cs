@@ -51,10 +51,9 @@
             // buttonExit
             // 
             buttonExit.BackColor = Color.Gold;
-            buttonExit.Location = new Point(390, 167);
-            buttonExit.Margin = new Padding(3, 2, 3, 2);
+            buttonExit.Location = new Point(446, 223);
             buttonExit.Name = "buttonExit";
-            buttonExit.Size = new Size(186, 38);
+            buttonExit.Size = new Size(213, 51);
             buttonExit.TabIndex = 0;
             buttonExit.Text = "Выйти из приложения";
             buttonExit.UseVisualStyleBackColor = false;
@@ -65,38 +64,42 @@
             dataExhibit.BackgroundColor = SystemColors.ActiveCaption;
             dataExhibit.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataExhibit.ContextMenuStrip = contextMenuStripExhibit;
-            dataExhibit.Location = new Point(8, 12);
+            dataExhibit.Location = new Point(9, 16);
+            dataExhibit.Margin = new Padding(3, 4, 3, 4);
             dataExhibit.Name = "dataExhibit";
             dataExhibit.ReadOnly = true;
-            dataExhibit.Size = new Size(304, 145);
+            dataExhibit.RowHeadersWidth = 51;
+            dataExhibit.Size = new Size(378, 193);
             dataExhibit.TabIndex = 1;
             // 
             // contextMenuStripExhibit
             // 
+            contextMenuStripExhibit.ImageScalingSize = new Size(20, 20);
             contextMenuStripExhibit.Items.AddRange(new ToolStripItem[] { удалитьToolStripMenuItem, toolStripMenuItem1 });
             contextMenuStripExhibit.Name = "contextMenuStripExhibit";
-            contextMenuStripExhibit.Size = new Size(129, 48);
+            contextMenuStripExhibit.Size = new Size(148, 52);
             // 
             // удалитьToolStripMenuItem
             // 
             удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            удалитьToolStripMenuItem.Size = new Size(128, 22);
+            удалитьToolStripMenuItem.Size = new Size(147, 24);
             удалитьToolStripMenuItem.Text = "Удалить";
             удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(128, 22);
+            toolStripMenuItem1.Size = new Size(147, 24);
             toolStripMenuItem1.Text = "Изменить";
             toolStripMenuItem1.Click += toolStripMenuItemEdit_Click;
             // 
             // buttonAdd
             // 
             buttonAdd.BackColor = Color.Gold;
-            buttonAdd.Location = new Point(8, 167);
+            buttonAdd.Location = new Point(9, 223);
+            buttonAdd.Margin = new Padding(3, 4, 3, 4);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(144, 30);
+            buttonAdd.Size = new Size(165, 40);
             buttonAdd.TabIndex = 2;
             buttonAdd.Text = "Добавить экспонат";
             buttonAdd.UseVisualStyleBackColor = false;
@@ -105,9 +108,10 @@
             // buttonSaveExhibit
             // 
             buttonSaveExhibit.BackColor = Color.Gold;
-            buttonSaveExhibit.Location = new Point(390, 56);
+            buttonSaveExhibit.Location = new Point(446, 75);
+            buttonSaveExhibit.Margin = new Padding(3, 4, 3, 4);
             buttonSaveExhibit.Name = "buttonSaveExhibit";
-            buttonSaveExhibit.Size = new Size(186, 34);
+            buttonSaveExhibit.Size = new Size(213, 45);
             buttonSaveExhibit.TabIndex = 9;
             buttonSaveExhibit.Text = "Сохранить в файл";
             buttonSaveExhibit.UseVisualStyleBackColor = false;
@@ -116,9 +120,10 @@
             // CreateDatabaseButton
             // 
             CreateDatabaseButton.BackColor = Color.Gold;
-            CreateDatabaseButton.Location = new Point(390, 109);
+            CreateDatabaseButton.Location = new Point(446, 145);
+            CreateDatabaseButton.Margin = new Padding(3, 4, 3, 4);
             CreateDatabaseButton.Name = "CreateDatabaseButton";
-            CreateDatabaseButton.Size = new Size(186, 38);
+            CreateDatabaseButton.Size = new Size(213, 51);
             CreateDatabaseButton.TabIndex = 10;
             CreateDatabaseButton.Text = "Создать учёт экспанатов";
             CreateDatabaseButton.UseVisualStyleBackColor = false;
@@ -127,9 +132,10 @@
             // DeleteDatabaseButton
             // 
             DeleteDatabaseButton.BackColor = Color.Gold;
-            DeleteDatabaseButton.Location = new Point(169, 167);
+            DeleteDatabaseButton.Location = new Point(193, 223);
+            DeleteDatabaseButton.Margin = new Padding(3, 4, 3, 4);
             DeleteDatabaseButton.Name = "DeleteDatabaseButton";
-            DeleteDatabaseButton.Size = new Size(186, 38);
+            DeleteDatabaseButton.Size = new Size(213, 51);
             DeleteDatabaseButton.TabIndex = 11;
             DeleteDatabaseButton.Text = "Удалить учёт экспонатов";
             DeleteDatabaseButton.UseVisualStyleBackColor = false;
@@ -138,20 +144,22 @@
             // buttonSearch
             // 
             buttonSearch.BackColor = Color.Gold;
-            buttonSearch.Location = new Point(8, 225);
+            buttonSearch.Location = new Point(9, 300);
+            buttonSearch.Margin = new Padding(3, 4, 3, 4);
             buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(144, 30);
+            buttonSearch.Size = new Size(165, 48);
             buttonSearch.TabIndex = 12;
-            buttonSearch.Text = "Поиск экспоната";
+            buttonSearch.Text = "Фильтрация экспонатов";
             buttonSearch.UseVisualStyleBackColor = false;
             buttonSearch.Click += buttonSearch_Click;
             // 
             // textBoxSearch
             // 
             textBoxSearch.BackColor = SystemColors.InactiveCaption;
-            textBoxSearch.Location = new Point(169, 230);
+            textBoxSearch.Location = new Point(193, 307);
+            textBoxSearch.Margin = new Padding(3, 4, 3, 4);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(120, 23);
+            textBoxSearch.Size = new Size(137, 27);
             textBoxSearch.TabIndex = 13;
             // 
             // comboBoxExhibit
@@ -160,28 +168,31 @@
             comboBoxExhibit.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxExhibit.FormattingEnabled = true;
             comboBoxExhibit.Items.AddRange(new object[] { "Имя", "Век", "Цена" });
-            comboBoxExhibit.Location = new Point(169, 283);
+            comboBoxExhibit.Location = new Point(193, 377);
+            comboBoxExhibit.Margin = new Padding(3, 4, 3, 4);
             comboBoxExhibit.Name = "comboBoxExhibit";
-            comboBoxExhibit.Size = new Size(120, 23);
+            comboBoxExhibit.Size = new Size(137, 28);
             comboBoxExhibit.TabIndex = 14;
             // 
             // buttonFiltering
             // 
             buttonFiltering.BackColor = Color.Gold;
-            buttonFiltering.Location = new Point(8, 276);
+            buttonFiltering.Location = new Point(9, 368);
+            buttonFiltering.Margin = new Padding(3, 4, 3, 4);
             buttonFiltering.Name = "buttonFiltering";
-            buttonFiltering.Size = new Size(144, 30);
+            buttonFiltering.Size = new Size(165, 49);
             buttonFiltering.TabIndex = 16;
-            buttonFiltering.Text = "Фильрация экспонатов";
+            buttonFiltering.Text = "Поиск экспонатов";
             buttonFiltering.UseVisualStyleBackColor = false;
             buttonFiltering.Click += buttonFiltering_Click;
             // 
             // buttonGoToUser
             // 
             buttonGoToUser.BackColor = Color.Gold;
-            buttonGoToUser.Location = new Point(390, 12);
+            buttonGoToUser.Location = new Point(446, 16);
+            buttonGoToUser.Margin = new Padding(3, 4, 3, 4);
             buttonGoToUser.Name = "buttonGoToUser";
-            buttonGoToUser.Size = new Size(186, 38);
+            buttonGoToUser.Size = new Size(213, 51);
             buttonGoToUser.TabIndex = 19;
             buttonGoToUser.Text = "Перейти к посетителям";
             buttonGoToUser.UseVisualStyleBackColor = false;
@@ -189,10 +200,10 @@
             // 
             // FormMuseum
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(767, 391);
+            ClientSize = new Size(877, 521);
             Controls.Add(buttonGoToUser);
             Controls.Add(buttonFiltering);
             Controls.Add(comboBoxExhibit);
@@ -204,7 +215,7 @@
             Controls.Add(buttonAdd);
             Controls.Add(dataExhibit);
             Controls.Add(buttonExit);
-            Margin = new Padding(3, 2, 3, 2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMuseum";
             Text = "Экспонаты";
             ((System.ComponentModel.ISupportInitialize)dataExhibit).EndInit();

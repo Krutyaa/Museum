@@ -38,9 +38,10 @@
             // GoToMuseum
             // 
             GoToMuseum.BackColor = SystemColors.ActiveCaption;
-            GoToMuseum.Location = new Point(57, 135);
+            GoToMuseum.Location = new Point(65, 180);
+            GoToMuseum.Margin = new Padding(3, 4, 3, 4);
             GoToMuseum.Name = "GoToMuseum";
-            GoToMuseum.Size = new Size(302, 127);
+            GoToMuseum.Size = new Size(345, 169);
             GoToMuseum.TabIndex = 0;
             GoToMuseum.Text = "Перейти к экспонатам";
             GoToMuseum.UseVisualStyleBackColor = false;
@@ -49,9 +50,10 @@
             // GoToUser
             // 
             GoToUser.BackColor = SystemColors.ActiveCaption;
-            GoToUser.Location = new Point(438, 135);
+            GoToUser.Location = new Point(501, 180);
+            GoToUser.Margin = new Padding(3, 4, 3, 4);
             GoToUser.Name = "GoToUser";
-            GoToUser.Size = new Size(302, 127);
+            GoToUser.Size = new Size(345, 169);
             GoToUser.TabIndex = 1;
             GoToUser.Text = "Перейти к посетителям";
             GoToUser.UseVisualStyleBackColor = false;
@@ -60,9 +62,10 @@
             // ApplicationExit
             // 
             ApplicationExit.BackColor = SystemColors.ActiveCaption;
-            ApplicationExit.Location = new Point(560, 376);
+            ApplicationExit.Location = new Point(640, 501);
+            ApplicationExit.Margin = new Padding(3, 4, 3, 4);
             ApplicationExit.Name = "ApplicationExit";
-            ApplicationExit.Size = new Size(228, 62);
+            ApplicationExit.Size = new Size(261, 83);
             ApplicationExit.TabIndex = 2;
             ApplicationExit.Text = "Выйти из приложения";
             ApplicationExit.UseVisualStyleBackColor = false;
@@ -72,23 +75,25 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(279, 67);
+            label1.Location = new Point(319, 89);
             label1.Name = "label1";
-            label1.Size = new Size(198, 15);
+            label1.Size = new Size(249, 20);
             label1.TabIndex = 3;
             label1.Text = "КРУТЯКОВ ДАНИИЛ 22ВП2 МУЗЕЙ";
             // 
             // FormStart
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(label1);
             Controls.Add(ApplicationExit);
             Controls.Add(GoToUser);
             Controls.Add(GoToMuseum);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormStart";
             Text = "Добро пожаловать в Музей";
             ResumeLayout(false);
