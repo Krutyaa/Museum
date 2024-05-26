@@ -22,4 +22,3 @@ namespace Museum
         /// </summary>
         public string? DateOfVisit { get; set; }
     }
-}
